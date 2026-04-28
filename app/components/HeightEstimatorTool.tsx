@@ -79,6 +79,49 @@ const HEIGHT_RANGES: HeightRange[] = [
 
 const FAQ_ITEMS: FaqItem[] = [
   {
+    question: "How does this Height Estimator work?",
+    answer: (
+      <>
+        <p>
+          This tool estimates apparent adult height from one image by combining visual proportion signals with scene
+          context and camera perspective cues. It returns an estimated height, a plausible range, and a confidence
+          rating so uncertainty is visible.
+        </p>
+        <p className="mt-3">
+          A single photo is an indirect input. Results should be interpreted as rough visual estimates for planning
+          and comparison, not exact measurement.
+        </p>
+      </>
+    ),
+  },
+  {
+    question: "How can I improve accuracy?",
+    answer: (
+      <ul className="list-disc pl-6 space-y-1">
+        <li>Use a full-body standing photo from head to feet.</li>
+        <li>Keep camera farther back to reduce perspective distortion.</li>
+        <li>Avoid top-down and wide-angle close-up shots.</li>
+        <li>Stand next to a known-height reference object when possible.</li>
+        <li>Use even lighting and minimal pose asymmetry.</li>
+      </ul>
+    ),
+  },
+  {
+    question: "What are the main limitations?",
+    answer: (
+      <>
+        <p>
+          Camera distance, lens type, tilt, footwear, and posture can change perceived body proportions substantially.
+          Without a known-size reference object, this estimate has meaningful uncertainty.
+        </p>
+        <p className="mt-3">
+          For precise height, direct measurement (stadiometer or wall-based measurement protocol) is the correct
+          method. Use this page as directional context only.
+        </p>
+      </>
+    ),
+  },
+  {
     question: "How accurate is height estimation from a photo?",
     answer:
       "Photo-based height estimation is a rough visual estimate, not an exact measurement. Accuracy depends heavily on image quality, camera angle, and whether the scene includes scale cues.",
@@ -361,10 +404,6 @@ export default function HeightEstimatorTool() {
     return formatFeetInches(cmToIn(estimate.estimatedHeightCm));
   }, [estimate?.estimatedHeightCm]);
 
-  const sectionWrap = "w-full max-w-3xl mx-auto space-y-6 text-gray-900 pt-10 pb-10 lg:pt-20 lg:pb-20 leading-relaxed";
-  const pClass = "text-lg leading-relaxed";
-  const h2Class = "text-3xl lg:text-4xl font-semibold text-center";
-
   return (
     <main className="bg-base-100">
       <section className="flex flex-col items-center justify-start pt-10 px-6">
@@ -464,44 +503,6 @@ export default function HeightEstimatorTool() {
       <section className="px-6">
         <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <InterpretationTable valueCm={estimate?.estimatedHeightCm ?? null} />
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How This Height Estimator Works</h2>
-          <p className={pClass}>
-            This tool estimates apparent adult height from one image by combining visual proportion signals with scene context and camera perspective cues. It returns an estimated height, a plausible range, and a confidence rating so uncertainty is visible.
-          </p>
-          <p className={pClass}>
-            A single photo is an indirect input. Results should be interpreted as rough visual estimates for planning and comparison, not exact measurement.
-          </p>
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>How To Improve Accuracy</h2>
-          <ul className="list-disc pl-6 space-y-2 text-lg">
-            {(estimate?.improvements?.length
-              ? estimate.improvements
-              : [
-                  "Use a full-body standing photo from head to feet.",
-                  "Keep camera farther back to reduce perspective distortion.",
-                  "Avoid top-down and wide-angle close-up shots.",
-                  "Stand next to a known-height reference object when possible.",
-                  "Use even lighting and minimal pose asymmetry.",
-                ]
-            ).map((tip, idx) => (
-              <li key={`${tip}-${idx}`}>{tip}</li>
-            ))}
-          </ul>
-        </div>
-
-        <div className={sectionWrap}>
-          <h2 className={h2Class}>Limitations</h2>
-          <p className={pClass}>
-            Camera distance, lens type, tilt, footwear, and posture can change perceived body proportions substantially. Without a known-size reference object, this estimate has meaningful uncertainty.
-          </p>
-          <p className={pClass}>
-            For precise height, direct measurement (stadiometer or wall-based measurement protocol) is the correct method. Use this page as directional context only.
-          </p>
         </div>
 
         <div className="hero pt-10 pb-10 lg:pt-20 lg:pb-20 flex items-center justify-center bg-base-100">
