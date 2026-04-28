@@ -51,11 +51,41 @@ export default function Footer() {
               <li>
                 <a
                   className="hover:text-white"
+                  href="https://bodyfatestimator.ai/canthal-tilt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Canthal Tilt Test
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
                   href="https://bodyfatestimator.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Body Fat Estimator
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://jawlinecheck.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Jawline Check
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://skoy.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Skoy
                 </a>
               </li>
               <li>
@@ -71,11 +101,21 @@ export default function Footer() {
               <li>
                 <a
                   className="hover:text-white"
-                  href="https://skoy.ai"
+                  href="https://bodyfatestimator.ai/body-shape-analyzer"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  SKOY
+                  Body Shape Analyzer
+                </a>
+              </li>
+              <li>
+                <a
+                  className="hover:text-white"
+                  href="https://bodyvisualizer.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Body Visualizer
                 </a>
               </li>
             </ul>
