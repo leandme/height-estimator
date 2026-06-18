@@ -4,6 +4,7 @@ import { ReactNode, useMemo, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { trackEvent } from "@/app/libs/amplitude";
 import { useHeightEstimate } from "@/app/hooks/useHeightEstimate";
+import EzoicAd from "./EzoicAd";
 
 type HeightRange = {
   key: string;
@@ -18,6 +19,12 @@ type HeightRange = {
 type FaqItem = {
   question: string;
   answer: ReactNode;
+};
+
+type AdPlacementIds = {
+  top: number | null;
+  middle: number | null;
+  bottom: number | null;
 };
 
 const MAX_FILE_SIZE_BYTES = 5 * 1024 * 1024;
@@ -393,7 +400,7 @@ function InterpretationTable({ valueCm }: { valueCm: number | null }) {
   );
 }
 
-export default function HeightEstimatorTool() {
+export default function HeightEstimatorTool({ adPlacementIds }: Readonly<{ adPlacementIds: AdPlacementIds }>) {
   const searchParams = useSearchParams();
   const imageUrl = searchParams.get("imageUrl");
   const source = searchParams.get("source") === "example" ? "example" : "upload";
@@ -500,10 +507,14 @@ export default function HeightEstimatorTool() {
         )}
       </section>
 
+      {adPlacementIds.top ? <EzoicAd id={adPlacementIds.top} /> : null}
+
       <section className="px-6">
         <div className="w-full max-w-3xl mx-auto pt-10 pb-10 lg:pt-20 lg:pb-20">
           <InterpretationTable valueCm={estimate?.estimatedHeightCm ?? null} />
         </div>
+
+        {adPlacementIds.middle ? <EzoicAd id={adPlacementIds.middle} /> : null}
 
         <div className="hero pt-10 pb-10 lg:pt-20 lg:pb-20 flex items-center justify-center bg-base-100">
           <div className="hero-content w-full px-4">
@@ -527,6 +538,7 @@ export default function HeightEstimatorTool() {
           </div>
         </div>
 
+        {adPlacementIds.bottom ? <EzoicAd id={adPlacementIds.bottom} /> : null}
       </section>
     </main>
   );
