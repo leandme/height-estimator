@@ -41,6 +41,27 @@ export default function PrivacyPolicy() {
       </section>
 
       <section className="mb-6">
+        <h2 className="text-2xl font-semibold mb-4">Advertising and Ezoic</h2>
+        <p className="mb-4">
+          We use Ezoic to provide advertising and related services on this website. Ezoic and its partners may use
+          cookies and process information about your visit as described in the disclosures below.
+        </p>
+        <span id="ezoic-privacy-policy-embed" />
+        <p className="mt-4">
+          You can also view the Ezoic privacy disclosures directly at{" "}
+          <a
+            href="https://g.ezoic.net/privacy/heightestimatorai.com"
+            className="text-primary hover:underline"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Ezoic&apos;s privacy policy for Height Estimator
+          </a>
+          .
+        </p>
+      </section>
+
+      <section className="mb-6">
         <h2 className="text-2xl font-semibold mb-4">Your Rights</h2>
         <ul className="list-disc pl-6 space-y-1">
           <li>Request access to information associated with your interactions.</li>
